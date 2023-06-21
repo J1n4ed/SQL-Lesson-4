@@ -4,14 +4,14 @@
 CREATE table if not exists Genres
 (
 	GenreId integer PRIMARY KEY,
-	GenreName varchar(30) NOT NULL
+	GenreName varchar(60) NOT NULL
 );
 
 -- таблица исполнителей
 CREATE table if not exists Performers
 (
 	PerfId integer PRIMARY KEY,
-	PerfName varchar(30) NOT NULL
+	PerfName varchar(60) NOT NULL
 );
 
 -- таблица соотношения исполнитель-жанр
@@ -26,7 +26,7 @@ CREATE table if not exists Perfgenre
 CREATE table if not exists Albums
 (
 	AlbumId integer PRIMARY KEY,
-	AlbumName varchar(30) NOT NULL,
+	AlbumName varchar(60) NOT NULL,
 	AlbumDate date NOT NULL	
 );
 
@@ -43,7 +43,7 @@ CREATE table if not exists Tracks
 (
 	TrackId integer PRIMARY KEY,
 	AlbumId integer REFERENCES Albums(AlbumId),
-	TrackName varchar(30) NOT NULL,
+	TrackName varchar(60) NOT NULL,
 	TrackLength INTERVAL NOT NULL
 );
 
@@ -51,7 +51,7 @@ CREATE table if not exists Tracks
 CREATE table if not exists Compilations
 (
 	CompId integer PRIMARY KEY,
-	CompName varchar(30) NOT NULL,
+	CompName varchar(60) NOT NULL,
 	CompDate date NOT NULL
 );
 
