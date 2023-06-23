@@ -8,7 +8,8 @@
 -- id, name
 
 insert into genres (genreid, genrename)
-values(1, 'Heavy Metal'),
+values
+(1, 'Heavy Metal'),
 (2, 'Popular'),
 (3, 'Metal'),
 (4, 'Classic'),
@@ -24,7 +25,8 @@ values(1, 'Heavy Metal'),
 -- id, name
 
 insert into performers(perfid, perfname)
-values(1, 'John Kilmer'),
+values
+(1, 'John Kilmer'),
 (2, 'Mary Brown'),
 (3, 'Franc Ulbrand'),
 (4, 'Olga Noeva'),
@@ -33,6 +35,20 @@ values(1, 'John Kilmer'),
 (7, 'Sergey Miloslavsky'),
 (8, 'Carry Flop'),
 (9, 'John Doe');
+
+-- Performers with single word name
+
+insert into performers(perfid, perfname)
+values
+(10, 'Sovngard'),
+(11, 'Bestie'),
+(12, 'V');
+
+-- add extra performer
+
+insert into performers(perfid, perfname)
+values
+(13, 'DeWinter');
 
 -- insert perfgeners
 -- performer id + genres id
@@ -52,6 +68,17 @@ values(1, 1),
 (4, 3),
 (5, 2),
 (6, 1);
+
+insert into perfgenre
+values
+(10, 1),
+(10, 2),
+(11, 3),
+(12, 4);
+
+insert into perfgenre
+values
+(13, 10);
 
 -- insert albums
 -- id, name, date
@@ -81,6 +108,14 @@ values
 (21, 'Esta Bien', TO_DATE('07/14/2007', 'MM/DD/YYYY')),
 (22, 'Dig the Grave', TO_DATE('07/05/1986', 'MM/DD/YYYY')),
 (23, 'Psyhorhymes', TO_DATE('06/17/1996', 'MM/DD/YYYY'));
+
+-- albums 2019-2020
+
+insert into albums
+values
+(24, 'Tetraventra', TO_DATE('01/20/2019', 'MM/DD/YYYY')),
+(25, 'Indigo Trails', TO_DATE('02/13/2020', 'MM/DD/YYYY')),
+(26, 'Groundbreaker', TO_DATE('05/21/2019', 'MM/DD/YYYY'));
 
 -- insert album to performer connection
 -- album id, perf id
@@ -124,6 +159,19 @@ values
 (23, 9),
 (23, 5);
 
+insert into albumperformers 
+values
+(24, 11),
+(24, 8),
+(24, 7),
+(25, 6),
+(25, 10),
+(26, 12);
+
+insert into albumperformers 
+values
+(26, 13);
+
 -- insert compilations
 -- id, name, date
 
@@ -135,6 +183,13 @@ values
 (4, 'This Years Besty Ultra Rhymes', TO_DATE('4/21/1988', 'MM/DD/YYYY')),
 (5, 'Who is John Cina?', TO_DATE('5/23/1978', 'MM/DD/YYYY')),
 (6, 'Orchestra', TO_DATE('6/28/2008', 'MM/DD/YYYY'));
+
+-- compilations between 2018 & 2020
+
+insert into compilations 
+values
+(7, 'Groundbeat', TO_DATE('1/11/2019', 'MM/DD/YYYY')),
+(8, 'My Little Wonnie', TO_DATE('2/14/2020', 'MM/DD/YYYY'));
 
 -- insert tracks
 -- track id, album id, name, length
@@ -222,6 +277,23 @@ values
 (79, 10, 'Scandic Brandt', interval '9' minute + interval '11' second),
 (80, 11, 'Killswitch', interval '5' minute + interval '09' second);
 
+-- need to add few tracks to new albums (!)
+
+insert into tracks 
+values
+(81, 24, 'Critical Mass', interval '5' minute + interval '51' second),
+(82, 24, 'Ultra Death Core', interval '6' minute + interval '52' second),
+(83, 24, 'Biscuit Jazz', interval '7' minute + interval '23' second),
+(84, 24, 'Deleted IRL', interval '8' minute + interval '16' second),
+(85, 25, 'Lipstick Misctic', interval '3' minute + interval '32' second),
+(86, 25, 'My Castles', interval '4' minute + interval '22' second),
+(87, 25, 'Gasoline Dreams', interval '5' minute + interval '56' second),
+(88, 25, 'Dreamgrinder', interval '2' minute + interval '11' second),
+(89, 26, 'Mercenary John', interval '5' minute + interval '30' second),
+(90, 26, 'Twisted Hipster', interval '4' minute + interval '42' second),
+(91, 26, 'Nimblefinger', interval '1' minute + interval '42' second),
+(92, 26, 'Business Cat', interval '6' minute + interval '32' second);
+
 -- insert compilation tracks
 -- comp id, track id
 -- 6 compilations to fill
@@ -263,3 +335,13 @@ values
 (6, 41),
 (6, 30),
 (6, 12);
+
+insert into comptracks 
+values
+(7, 11),
+(7, 12),
+(7, 13),
+(8, 16),
+(8, 2),
+(8, 22),
+(8, 60);
